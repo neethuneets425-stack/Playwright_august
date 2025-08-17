@@ -4,7 +4,7 @@ console.log(typeof city)
 let marks = "85"
 console.log(marks+10)
 console.log(typeof marks)
-const isWeekend = "true"
+const isWeekend = true
 if (isWeekend)
     {
     console.log("relax")
@@ -17,5 +17,6 @@ if (isWeekend)
  var futureGoal
  console.log(futureGoal)
  console.log(typeof futureGoal)  
+
 
 
