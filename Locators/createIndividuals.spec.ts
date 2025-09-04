@@ -1,0 +1,21 @@
+import test,{chromium, expect} from '@playwright/test'
+test('createIndividuals',async({page})=>{
+    await page.goto("https://login.salesforce.com/?locale=in")
+    await page.locator('#username').fill('vidyar@testleaf.com')
+    await page.locator('#password').fill('Sales@123')
+    await page.locator("[name='Login']").click()
+    await page.locator("//div[@class='slds-r5']").click()
+    await page.locator("//button[@aria-label='View All Applications']").click()
+    await page.getByPlaceholder("Search apps or items...").fill('individuals')
+    await page.waitForTimeout(5000)
+    await page.locator(`text='Individuals'`).click()
+    await page.locator("(//lightning-primitive-icon[@size='xx-small'])[11]").click()
+    await page.waitForTimeout(5000)
+    await page.locator("//div[@title='New']").click()
+    await page.getByPlaceholder("Last Name").fill('Midun')
+    await page.locator(`text='Save'`).click()
+    //const lastName= await page.textContent("//div[@class='toastMessage slds-text-heading--small forceActionsText']")
+    const lastName=await page.textContent(`text='Midun'`)
+    expect(lastName).toContain('Midun')
+
+})
